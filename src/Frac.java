@@ -62,7 +62,7 @@ class Frac {
     }
 
     public int digShorten() {
-        for (int i = (this.a>this.b?this.a:this.b); i > 1; i--) {
+        for (int i = (this.a > this.b ? this.a : this.b); i > 1; i--) {
             if (this.a % i == 0 & this.b % i == 0) {
                 return i;
             }
@@ -72,14 +72,22 @@ class Frac {
     }
 
     public Frac makeShort() {
-        return (new Frac(this.a/digShorten(),this.b/digShorten()));
+        return (new Frac(this.a / digShorten(), this.b / digShorten()));
     }
 
     boolean isEqual(Frac a) {
-        if(this.a * a.b - a.a * this.b == 0) return true;
+        if (this.a * a.b - a.a * this.b == 0) return true;
         return false;
     }
 
+    int compareTo(Frac a) {
+        if (this.a * a.b - a.a * this.b == 0) {
+            return 0;
+        } else if (this.a * a.b - a.a * this.b > 0) {
+            return 1;
+        }
+        return -1;
+    }
 
 }
 
